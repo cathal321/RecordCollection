@@ -1,0 +1,11 @@
+{
+    "mcpServers": {
+        "laravel-boost": {
+            "command": "/Users/cathalcarlin/Library/Application Support/Herd/bin/php84",
+            "args": [
+                "/Users/cathalcarlin/my-clean-app/record-collection/artisan",
+                "boost:mcp"
+            ]
+        }
+    }
+}
