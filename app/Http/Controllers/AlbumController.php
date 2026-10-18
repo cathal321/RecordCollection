@@ -30,7 +30,15 @@ class AlbumController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'artist' => 'required',
+
+        ]);
+        Album::create($request->all());
+        return redirect()->route('albums.index');
+        -> with('success', 'Album created successfully');
+
     }
 
     /**
