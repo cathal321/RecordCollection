@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\Album;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Controller;
+use Illuminate\View\View;
 
 class AlbumController extends Controller
 {
@@ -36,8 +38,8 @@ class AlbumController extends Controller
 
         ]);
         Album::create($request->all());
-        return redirect()->route('albums.index');
-        -> with('success', 'Album created successfully');
+        return redirect()->route('albums.index')
+                         -> with('success', 'Album created successfully');
 
     }
 
@@ -69,7 +71,7 @@ class AlbumController extends Controller
         ]);
         $album->update($request->all());
 
-        return redirect()->route('albums.index');
+        return redirect()->route('albums.index')
         -> with('success', 'Album updated successfully');
     }
 
@@ -79,7 +81,7 @@ class AlbumController extends Controller
     public function destroy(Album $album)
     {
         $album->delete();
-        return redirect()->route('albums.index');
+        return redirect()->route('albums.index')
         -> with('success', 'Album deleted successfully');
     }
 }

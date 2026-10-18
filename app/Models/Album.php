@@ -10,6 +10,7 @@ class Album extends Model
        'title',
        'artist',
        'release_year',
-       'run_time'
+       'run_time',
+       'cover'
    ];
 }
