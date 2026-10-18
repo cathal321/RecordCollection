@@ -3,18 +3,17 @@
 namespace App\Http\Controllers;
 use App\Models\Album;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 
 class AlbumController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
         $albums = Album::all();
-
         return view('albums.index', compact('albums'));
-
 
     }
 
@@ -23,7 +22,7 @@ class AlbumController extends Controller
      */
     public function create()
     {
-        //
+        return view('albums.create');
     }
 
     /**
