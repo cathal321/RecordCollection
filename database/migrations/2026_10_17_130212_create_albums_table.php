@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('artist');
-            $table->year('c')->nullable();
+            $table->year('release_year')->nullable();
             $table->integer('run_time')->nullable();
             $table->string('cover')->nullable();
             $table->timestamps();
