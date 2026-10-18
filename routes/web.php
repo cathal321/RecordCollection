@@ -3,5 +3,11 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', [\App\Http\Controllers\RecordCollectionController::class, 'index']);
+Route::get('/', function () {
+    return view('login');
+});
+
+Route::get('/home', function () {
+    return view('home');
+});
 
