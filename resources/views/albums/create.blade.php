@@ -66,6 +66,7 @@
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
+
         }
         .album-form button {
             padding: 10px 20px;
