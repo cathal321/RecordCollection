@@ -1,9 +1,11 @@
 @extends('layout')
 
 @section('content')
+    <div class="page-header">
     <h1>My Record Collection</h1>
     <p>You have {{ $albums->count() }} albums</p>
     <a href="{{ route('albums.create') }}">Add album</a>
+    </div>
 
     <div class="album-grid">
         @foreach ($albums as $album)
@@ -23,18 +25,24 @@
     </div>
 
     <style>
+        .page-header {
+            text-align: center;
+        }
+
         .album-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
             gap: 20px;
             margin-top: 20px;
         }
         .album-card {
-            border: 1px solid #ddd;
+            border: none;
             border-radius: 8px;
             padding: 10px;
             text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
         }
+
         .album-card img,
         .no-cover {
             width: 100%;
