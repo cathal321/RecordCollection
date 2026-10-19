@@ -1,8 +1,67 @@
 @extends('layout')
-<h1>{{ $album->title }}</h1>
-<h2>{{ $album->artist }}</h2>
-<p>{{ $album->release_year }}</p>
-<p>{{ $album->run_time }} minutes</p>
-<img src="{{ asset('storage/' . $album->cover) }}" alt="{{ $album->title }} cover" width="150" height="150">
 
-<a href="{{ route('albums.index') }}">Back</a>
+@section('content')
+    <a href="{{ route('albums.index') }}">&larr; Back</a>
+
+    <div class="album-detail">
+        @if ($album->cover)
+            <img src="{{ asset('storage/' . $album->cover) }}" alt="{{ $album->title }} cover">
+        @else
+            <div class="no-cover">No cover</div>
+        @endif
+
+        <div class="album-info">
+            <h1>{{ $album->title }}</h1>
+            <h2>{{ $album->artist }}</h2>
+
+            <dl>
+                @if ($album->release_year)
+                    <dt>Released</dt>
+                    <dd>{{ $album->release_year }}</dd>
+                @endif
+
+                @if ($album->run_time)
+                    <dt>Run time</dt>
+                    <dd>{{ $album->run_time }} minutes</dd>
+                @endif
+            </dl>
+        </div>
+    </div>
+
+    <style>
+        .album-detail {
+            display: grid;
+            grid-template-columns: minmax(200px, 320px) 1fr;
+            gap: 30px;
+            margin-top: 20px;
+            align-items: start;
+        }
+        .album-detail img,
+        .no-cover {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .no-cover {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #eee;
+            color: #888;
+        }
+        .album-info h1 { margin: 0 0 5px; }
+        .album-info h2 { margin: 0 0 20px; font-weight: normal; color: #555; }
+        .album-info dl {
+            display: grid;
+            grid-template-columns: max-content 1fr;
+            gap: 8px 16px;
+        }
+        .album-info dt { font-weight: bold; }
+        .album-info dd { margin: 0; }
+
+        @media (max-width: 600px) {
+            .album-detail { grid-template-columns: 1fr; }
+        }
+    </style>
+@endsection
