@@ -1,3 +1,5 @@
+@extends('layout')
+<title>Your Records</title>
 <h1>My Record Collection</h1>
 
 <p>You have {{ $albums->count() }} albums</p>
@@ -11,5 +13,6 @@
         </a>
         <p>{{ $album->artist }}</p>
         <p>{{ $album->release_year }}</p>
+        <p>{{ $album->cover }}</p>
     </div>
 @endforeach

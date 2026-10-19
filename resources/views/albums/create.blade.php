@@ -1,16 +1,5 @@
-@section('content')
-    <h2>Add New Album</h2>
-
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul class="mb-0">
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
+<h2>Add New Album</h2>
+<title>Add new album</title>
     <form action="{{ route('albums.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
