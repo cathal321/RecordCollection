@@ -32,14 +32,17 @@ class AlbumController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
             'title' => 'required',
             'artist' => 'required',
-
+            'release_year' => 'nullable|integer',
+            'run_time' => 'nullable|integer',
+            'cover' => 'nullable|image',
         ]);
-        Album::create($request->all());
-        return redirect()->route('albums.index')
-                         -> with('success', 'Album created successfully');
+        if ($request->hasFile('cover')) {
+            $data['cover'] = $request->file('cover')->store('covers', 'public');
+        }
+        Album::create($data);
 
     }
 

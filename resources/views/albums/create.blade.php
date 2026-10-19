@@ -23,5 +23,6 @@
             <input type="file" name="cover" class="form-control" accept="image/*">
         </div>
         <button {{ route('albums.store') }}>Save Album</button>
+        <a href="{{ route('albums.index') }}">Back</a>
     </form>
 
