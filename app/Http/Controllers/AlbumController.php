@@ -44,6 +44,7 @@ class AlbumController extends Controller
         }
         Album::create($data);
 
+        return redirect()->route('albums.index');
     }
 
     /**
