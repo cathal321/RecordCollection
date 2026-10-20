@@ -33,7 +33,7 @@
             display: grid;
             grid-template-columns: minmax(200px, 320px) 1fr;
             gap: 30px;
-            margin-top: 20px;
+            margin-top: 100px;
             align-items: start;
         }
         .album-detail img,
@@ -63,6 +63,14 @@
 
         @media (max-width: 600px) {
             .album-detail { grid-template-columns: 1fr; }
+        }
+
+        .album-detail:hover{
+            transition: transform 0.25s ease-in-out;
+        }
+
+        .album-detail:hover {
+            transform: scale(1.02);
         }
     </style>
 @endsection

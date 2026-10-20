@@ -61,5 +61,13 @@
             text-decoration: none;
             color: inherit;
         }
+
+        .album-card{
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .album-card:hover {
+            transform: scale(1.03);
+        }
     </style>
 @endsection
