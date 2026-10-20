@@ -30,6 +30,8 @@
                 @method('DELETE')
                 <button type="submit">Delete Album</button>
             </form>
+
+            <a href="{{ route('albums.edit', $album) }}" >Edit Album</a>
         </div>
 
 
