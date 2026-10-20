@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Storage;
 
 class AlbumController extends Controller
 {
@@ -68,25 +69,21 @@ class AlbumController extends Controller
      */
     public function update(Request $request, Album $album)
     {
-        $request->validate([
+        $data = $request->validate([
             'title' => 'required',
             'artist' => 'required',
-
+            'release_year' => 'nullable|integer',
+            'run_time' => 'nullable|integer',
+            'cover' => 'nullable|image',
         ]);
-        $album->update($request->all());
+
+        if ($request->hasFile('cover')) {
+            $data['cover'] = $request->file('cover')->store('covers', 'public');
+        }
+
+        $album->update($data);
 
         return redirect()->route('albums.index')
-        -> with('success', 'Album updated successfully');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Album $album)
-    {
-
-        $album->delete();
-        return redirect()->route('albums.index')
-        -> with('success', 'Album deleted successfully');
+            ->with('success', 'Album updated successfully');
     }
 }
