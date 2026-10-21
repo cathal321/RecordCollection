@@ -4,7 +4,9 @@
     <div class="page-header">
     <h1>My Record Collection</h1>
     <p>You have {{ $albums->count() }} albums</p>
-    <a href="{{ route('albums.create') }}">Add album</a>
+        <div class="addAlbum">
+        <a href="{{ route('albums.create') }}" class="btn">Add album</a>
+        </div>
         <form class="album-form" action={{ URL ('albums')}}  method="GET">
             <div>
                 <input type = "text" placeholder="Search" id="search" name="search">
@@ -79,14 +81,39 @@
             transform: scale(1.03);
         }
 
-        .album-form button{
+        .album-form button,
+        .addAlbum .btn {
+            display: inline-block;
             padding: 10px 20px;
             border: none;
             border-radius: 4px;
             background: #333;
             color: #fff;
             cursor: pointer;
+            font: inherit;
+            text-decoration: none;
         }
+
+        .album-form button:hover,
+        .addAlbum .btn:hover {
+            background: #555;
+        }
+
+        .addAlbum {
+            margin-bottom: 20px;
+        }
+        .album-form input[type="text"] {
+            width: 300px;
+            padding: 10px 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: #fff;
+            color: #333;
+            font: inherit;
+            box-sizing: border-box;
+            margin-bottom: 40px;
+        }
+
 
     </style>
 @endsection
