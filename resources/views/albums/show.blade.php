@@ -25,18 +25,17 @@
                     <dd>{{ $album->run_time }} minutes</dd>
                 @endif
             </dl>
-            <form class="album-delete" action="{{ route('albums.destroy', $album) }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                @method('DELETE')
-                <button type="submit">Delete Album</button>
-            </form>
 
-            <a href="{{ route('albums.edit', $album) }}" >Edit Album</a>
+            <div class="album-actions">
+                <a href="{{ route('albums.edit', $album) }}" class="btn">Edit Album</a>
+
+                <form class="album-delete" action="{{ route('albums.destroy', $album) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn">Delete Album</button>
+                </form>
+            </div>
         </div>
-
-
-        </div>
-
 
     </div>
 
@@ -85,8 +84,27 @@
             transform: scale(1.02);
         }
 
-        .album-delete {
+        .album-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             margin-top: 40px;
+        }
+
+        .album-actions .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background: #333;
+            color: #fff;
+            cursor: pointer;
+            font: inherit;
+            text-decoration: none;
+        }
+
+        .album-actions .btn:hover {
+            background: #555;
         }
     </style>
 @endsection
