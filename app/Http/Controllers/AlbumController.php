@@ -87,14 +87,12 @@ class AlbumController extends Controller
 
         $album->update($data);
 
-        return redirect()->route('albums.index')
-            ->with('success', 'Album updated successfully');
+        return redirect()->route('albums.index');
     }
 
     public function destroy(Album $album)
     {
         $album->delete();
-        return redirect()->route('albums.index')
-            ->with('success', 'Album deleted successfully');
+        return redirect()->route('albums.index');
     }
 }
