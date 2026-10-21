@@ -5,7 +5,7 @@
     <h1>My Record Collection</h1>
     <p>You have {{ $albums->count() }} albums</p>
     <a href="{{ route('albums.create') }}">Add album</a>
-        <form action={{ URL ('albums')}}  method="GET">
+        <form class="album-form" action={{ URL ('albums')}}  method="GET">
             <div>
                 <input type = "text" placeholder="Search" id="search" name="search">
                 <button type="submit">Search</button>
@@ -78,5 +78,15 @@
         .album-card:hover {
             transform: scale(1.03);
         }
+
+        .album-form button{
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background: #333;
+            color: #fff;
+            cursor: pointer;
+        }
+
     </style>
 @endsection
