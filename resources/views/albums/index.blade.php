@@ -5,7 +5,14 @@
     <h1>My Record Collection</h1>
     <p>You have {{ $albums->count() }} albums</p>
     <a href="{{ route('albums.create') }}">Add album</a>
+        <form action={{ URL ('albums')}}  method="GET">
+            <div>
+                <input type = "text" placeholder="Search" id="search" name="search">
+                <button type="submit">Search</button>
+            </div>
+        </form>
     </div>
+
 
     <div class="album-grid">
         @foreach ($albums as $album)
@@ -23,6 +30,8 @@
             </div>
         @endforeach
     </div>
+
+
 
     <style>
         .page-header {

@@ -13,7 +13,7 @@ class AlbumController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): View
+    public function index(Request $request): View
     {
         $albums = Album::all();
         return view('albums.index', compact('albums'));
@@ -85,5 +85,12 @@ class AlbumController extends Controller
 
         return redirect()->route('albums.index')
             ->with('success', 'Album updated successfully');
+    }
+
+    public function destroy(Album $album)
+    {
+        $album->delete();
+        return redirect()->route('albums.index')
+            ->with('success', 'Album deleted successfully');
     }
 }
