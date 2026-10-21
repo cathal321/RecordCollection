@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-    <a href="{{ route('albums.index') }}">&larr; Back</a>
+    <a href="{{ route('albums.index') }}" class="btn">&larr; Back</a>
 
     <div class="album-detail">
         @if ($album->cover)
@@ -91,7 +91,7 @@
             margin-top: 40px;
         }
 
-        .album-actions .btn {
+        .btn {
             display: inline-block;
             padding: 10px 20px;
             border: none;
@@ -103,7 +103,7 @@
             text-decoration: none;
         }
 
-        .album-actions .btn:hover {
+        .btn:hover {
             background: #555;
         }
     </style>
