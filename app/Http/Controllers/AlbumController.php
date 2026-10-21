@@ -15,7 +15,11 @@ class AlbumController extends Controller
      */
     public function index(Request $request): View
     {
-        $albums = Album::all();
+        $albums = Album::when($request->search, function ($query) use ($request) {
+            return $query->whereAny([
+                'title','artist','release_year'
+            ],$request->search);
+        })->get();
         return view('albums.index', compact('albums'));
 
     }
