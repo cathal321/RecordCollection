@@ -3,7 +3,7 @@
 @section('title', 'Edit Album')
 
 @section('content')
-    <a href="{{ route('albums.index') }}">&larr; Back</a>
+    <a href="{{ route('albums.index') }}" class="btn">&larr; Back</a>
 
     <h2 class="form-title">Edit Album</h2>
 
@@ -69,13 +69,21 @@
             box-sizing: border-box;
 
         }
+        .btn,
         .album-form button {
+            display: inline-block;
             padding: 10px 20px;
             border: none;
             border-radius: 4px;
             background: #333;
             color: #fff;
             cursor: pointer;
+            font: inherit;
+            text-decoration: none;
+        }
+        .btn:hover,
+        .album-form button:hover {
+            background: #555;
         }
         .form-errors {
             max-width: 450px;
